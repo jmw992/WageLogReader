@@ -9,7 +9,7 @@ def readLogDirectoryWriteCompiled(inputDirectory, outputDirectory):
     settingsInfoHeaderRow = ['logName', 'BatchSize', 'Dataset', 'bitsW',
                              'bitsA', 'bitsG', 'bitsE',  'bitsR,', 'lr',
                              'lr_sched', 'L2', 'lossFunc', 'optimizer',
-                             'numEpochs', 'numLayers']
+                             'numLayers']
 
     settingsDf = pd.DataFrame(columns=settingsInfoHeaderRow)
 
@@ -114,7 +114,6 @@ def readLogDirectoryWriteCompiled(inputDirectory, outputDirectory):
     runEpochInfoDf.to_csv(runEpochFile, index=False)
 
 def removeBrokenSessions(settingsDf, epochsDf):
-    print('quoi')
     validEpochSessionsDf = None
     validSettingsDf = pd.DataFrame(columns=list(settingsDf.columns.values))
     brokenSettingsDf = pd.DataFrame(columns=list(settingsDf.columns.values))
@@ -133,12 +132,12 @@ def removeBrokenSessions(settingsDf, epochsDf):
     return brokenSettingsDf, validEpochSessionsDf, validSettingsDf
 
 def plotTrainingEpochsSession(trainingKey, epochDf):
-    print('fuck me')
+    pass
 
 if __name__ == "__main__":
     inputLogDirectory = './rawLogData/'
     compiledDirectory = './compiledData/'
-    #readLogDirectoryWriteCompiled(inputLogDirectory, compiledDirectory)
+    readLogDirectoryWriteCompiled(inputLogDirectory, compiledDirectory)
     settingsFile = compiledDirectory + 'rawSettings.csv'
     epochFile = compiledDirectory + 'rawEpochInfo.csv'
 
@@ -150,7 +149,6 @@ if __name__ == "__main__":
     brokenSettingsDf.to_csv((compiledDirectory + 'BrokenSettings.csv'), index=False)
     cleanedSettingsDf.to_csv((compiledDirectory + 'CleanedSettings.csv'), index=False)
     cleanedEpochsDf.to_csv((compiledDirectory + 'CleanedEpochs.csv'), index=False)
-
 
     print('Done All Files')
 
